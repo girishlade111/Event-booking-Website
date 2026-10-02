@@ -1,69 +1,76 @@
-# Welcome to your Lovable project
+# PSK Services — Event Booking Website
 
-## Project info
+A complete event booking website for an event services business. Browse services, read the blog, check references, and complete a multi-step booking flow — all client-side. Built with Vite, React, TypeScript, Tailwind CSS, and shadcn/ui.
 
-**URL**: https://lovable.dev/projects/4895dbd0-4609-4ca0-9728-8cee578eee22
+## Features
 
-## How can I edit this code?
+- **Home page** — hero, service highlights, testimonials, call-to-action sections
+- **Services page** — event service catalog with details
+- **Multi-step booking flow** — guided booking form with step progress
+- **Blog** — article listing + detail pages (`/blog`, `/blog/:id`)
+- **References page** — client references / portfolio showcase
+- **Shared layout** — navbar, footer, 404 page
+- **Responsive design** — mobile-first Tailwind layout with full shadcn/ui kit
+- **Toasts & tooltips** — Sonner + Radix-based notifications
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- **Framework:** React 18 + TypeScript + Vite
+- **Styling:** Tailwind CSS + shadcn/ui (Radix primitives)
+- **Routing:** React Router (BrowserRouter)
+- **Data fetching:** TanStack Query
+- **Forms:** React Hook Form + Zod validation
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/4895dbd0-4609-4ca0-9728-8cee578eee22) and start prompting.
+## Quick Start
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+npm install --legacy-peer-deps
+npm run dev        # start dev server
+npm run build      # production build -> dist/
+npm run preview    # preview the production build
 ```
 
-**Edit a file directly in GitHub**
+Requirements: Node.js 18+.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Project Structure
 
-**Use GitHub Codespaces**
+```
+├── index.html
+├── public/                  # static assets
+├── src/
+│   ├── App.tsx              # router + providers (QueryClient, Tooltip, Toaster)
+│   ├── main.tsx             # entry point
+│   ├── pages/
+│   │   ├── Index.tsx        # home
+│   │   ├── Services.tsx     # service catalog
+│   │   ├── Booking.tsx      # multi-step booking flow
+│   │   ├── Blog.tsx         # blog listing
+│   │   ├── BlogDetail.tsx   # blog article
+│   │   ├── References.tsx   # client references
+│   │   └── NotFound.tsx     # 404
+│   ├── components/
+│   │   ├── Navbar.tsx, Footer.tsx, ...
+│   │   └── ui/              # shadcn/ui components
+├── tailwind.config.ts
+├── vite.config.ts
+└── tsconfig.json
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Deploy
 
-## What technologies are used for this project?
+Static site — deploy the `dist/` folder to any static host:
 
-This project is built with .
+```bash
+npm run build
+# then deploy dist/ to Cloudflare Pages, Netlify, or GitHub Pages
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+No environment variables required. Because the app uses `BrowserRouter`, static hosts should rewrite all routes to `index.html` (a `_redirects` / `/* /index.html 200` rule) so deep links like `/booking` and `/blog/:id` work.
 
-## How can I deploy this project?
+## License
 
-Simply open [Lovable](https://lovable.dev/projects/4895dbd0-4609-4ca0-9728-8cee578eee22) and click on Share -> Publish.
+MIT — free to use and adapt.
 
-## I want to use a custom domain - is that possible?
+---
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+*Built by [Girish Lade](https://ladestack.in) — explore more open-source tools and products at [ladestack.in](https://ladestack.in).*
